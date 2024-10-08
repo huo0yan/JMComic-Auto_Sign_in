@@ -12,8 +12,8 @@ headers = {
 
 # 用户名和密码
 payload = {
-    'username': 'username',
-    'password': 'password',
+    'username': 'huo0yan',
+    'password': 'abcd1234',
     'submit_login': '1',
 }
 
@@ -45,13 +45,17 @@ with requests.Session() as session:
             # 返回签到内容
             SIGN_response_data = json.loads(SIGN_response.text)
             if "error" in SIGN_response_data:
-                print("签到:", SIGN_response_data['error'])
-                print("自动签到执行完成！")
+                print("签到失败,你已经签到过了")
             else:
-                print("签到失败,你还没有登录账号")
+                if "EXP" in SIGN_response_data:
+                    print("签到成功:", SIGN_response_data['msg'])
+                    print("自动签到执行完成！")
+                else:
+                    print("签到失败，还未登录")                
             print()
             #返回 {"msg":""} 没有登录
             #返回 {"msg":"","error":"finished"} 已经签到过了
+            #返回 {"msg":"\u60a8\u5df2\u7d93\u5b8c\u6210\u6bcf\u65e5\u7c3d\u5230\uff0c\u7372\u5f97 [ JCoin:20 ]  [ EXP:20 ] \n"} 签到成功
 
             # 退出账号
             LOGOUT_response = session.get(LOGOUT_URL, headers=headers)
