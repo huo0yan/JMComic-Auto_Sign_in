@@ -12,8 +12,8 @@ headers = {
 
 # 用户名和密码
 payload = {
-    'username': 'huo0yan',
-    'password': 'abcd1234',
+    'username': 'username',
+    'password': 'password',
     'submit_login': '1',
 }
 
