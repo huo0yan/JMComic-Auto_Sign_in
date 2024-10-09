@@ -46,12 +46,9 @@ with requests.Session() as session:
             SIGN_response_data = json.loads(SIGN_response.text)
             if "error" in SIGN_response_data:
                 print("签到失败,你已经签到过了")
-            else:
-                if "EXP" in SIGN_response_data:
-                    print("签到成功:", SIGN_response_data['msg'])
-                    print("自动签到执行完成！")
-                else:
-                    print("签到失败，还未登录")                
+            else:  
+                print("签到成功:", SIGN_response_data['msg'])
+                print("自动签到执行完成！")                
             print()
             #返回 {"msg":""} 没有登录
             #返回 {"msg":"","error":"finished"} 已经签到过了
