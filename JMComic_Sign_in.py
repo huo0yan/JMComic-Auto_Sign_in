@@ -29,7 +29,7 @@ with requests.Session() as session:
 
         #成功 {"status":1,"errors":["https:\/\/18comic-blackmyth.club"]}
         #失败 {"status":2,"errors":["\u65e0\u6548\u7684\u7528\u6237\u540d\u548c\/\u6216\u5bc6\u7801!"]}
-        if '"status":1' in LOGIN_response.text:
+        if response_data["status"] == 1:
             print("账号登录成功\n")
 
             # 输出登录成功后的cookie
