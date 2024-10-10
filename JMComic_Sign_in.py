@@ -1,13 +1,15 @@
 import requests
 import json
-
-LOGIN_URL = 'https://18comic-blackmyth.club/login'                      # 登录URL
-SIGN_URL = 'https://18comic-blackmyth.club/ajax/user_daily_sign'        # 签到URL
-LOGOUT_URL = 'https://18comic-blackmyth.club/logout'                    # 退出URL
+#如果运行报错可能是换域名了，进官网会自动重定向新的域名，把老的换成新的域名后面路径不用改
+#JM域名:    18comic-blackmyth.club/login        ->      18comic-hok.xyz/login
+LOGIN_URL = 'https://18comic-hok.xyz/login'                      # 登录URL
+SIGN_URL = 'https://18comic-hok.xyz/ajax/user_daily_sign'        # 签到URL
+LOGOUT_URL = 'https://18comic-hok.xyz/logout'                    # 退出URL
 
 # 请求头
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 }
 
 # 用户名和密码
@@ -27,7 +29,7 @@ with requests.Session() as session:
         #获取返回的json判断是否登录成功
         response_data = json.loads(LOGIN_response.text)
 
-        #成功 {"status":1,"errors":["https:\/\/18comic-blackmyth.club"]}
+        #成功 {"status":1,"errors":["https:\/\/18comic-hok.xyz"]}
         #失败 {"status":2,"errors":["\u65e0\u6548\u7684\u7528\u6237\u540d\u548c\/\u6216\u5bc6\u7801!"]}
         if response_data["status"] == 1:
             print("账号登录成功\n")
