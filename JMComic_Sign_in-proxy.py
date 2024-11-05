@@ -45,8 +45,8 @@ set_socks_proxy(set_proxy, proxy_host, proxy_port)
 # 发送登录请求
 with requests.Session() as session:
     LOGIN_response = session.post(LOGIN_URL, data=LOGIN_DATA, headers=headers, cookies=set_cookies)
-
-    print(LOGIN_response)
+    # 输入状态码
+    # print(LOGIN_response)
     
     # 成功返回200，不成功返回301
     if LOGIN_response.status_code == 200:
@@ -70,7 +70,7 @@ with requests.Session() as session:
             SIGN_response = session.post(SIGN_URL, headers=headers, data=SIGN_DATA, cookies=set_cookies)
 
             # 返回签到内容
-            print(SIGN_response.text)
+            # print(SIGN_response.text)
             SIGN_response_data = json.loads(SIGN_response.text)
             if "error" in SIGN_response_data:
                 print("签到失败,你已经签到过了")
@@ -101,7 +101,7 @@ with requests.Session() as session:
 
             # 访问签到页面判断是否登出，返回 {"msg":""} 就是退出了
             SIGN_response = session.post(SIGN_URL, headers=headers, data=SIGN_DATA, cookies=set_cookies)
-            print(SIGN_response.text)
+            # print(SIGN_response.text)
             if not "error" in json.loads(SIGN_response.text):
                 print("账号登出成功")
             else:
