@@ -110,7 +110,7 @@ with requests.Session() as session:
             print("登录失败:", response_data['errors'])
     else:
         if LOGIN_response.status_code == 403:
-            print("Cloudflare验证")
+            print("403 Cloudflare验证")
         else:
             print("发送登录请求失败")
 
