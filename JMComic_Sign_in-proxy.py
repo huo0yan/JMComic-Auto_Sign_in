@@ -13,8 +13,8 @@ BASE_URL = 'https://18comic.vip'        #如果运行报错可能是换域名了
 
 # 用户名和密码
 LOGIN_DATA = {
-    'username': 'username',
-    'password': 'password',
+    'username': '0933127895',
+    'password': 'pccu1123',
     'submit_login': '1',
 }
 SIGN_DATA = {
