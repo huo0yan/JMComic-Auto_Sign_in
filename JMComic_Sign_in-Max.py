@@ -185,8 +185,8 @@ if __name__ == "__main__":
 
     # 账号密码
     LOGIN_DATA = {
-        'username': 'huo1yan',
-        'password': 'abcd1234',
+        'username': 'username',
+        'password': 'password',
         'submit_login': '1',
     }
     
