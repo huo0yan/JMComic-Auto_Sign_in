@@ -14,13 +14,13 @@ def find_and_click(template_path, threshold=0.1):
     # 截取当前屏幕
     screenshot = pyautogui.screenshot()
 
-    # 将截图转换为 OpenCV 可处理的格式（BGR）
+    # 将截图转换为OpenCV
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
 
-    # 加载目标图片
+    # 加载cloud图片
     template = cv2.imread(template_path, cv2.IMREAD_COLOR)
     if template is None:
-        print(f"错误：无法加载目标图片 {template_path}")
+        print(f"错误：无法加载图片 {template_path}")
         return
     
     # 获取目标图片的高度和宽度
@@ -66,7 +66,7 @@ def open_browser_with_proxy(BASE_URL, proxy):
 
     # 打开目标网页
     tab = browser.latest_tab  # 获取最新标签页
-    tab.get(BASE_URL, timeout=30)  # 访问目标网页，设置超时时间为 30 秒
+    tab.get(BASE_URL, timeout=30)  # 访问目标网页，设置超时时间为30秒
     print(f"已打开网页：{BASE_URL}")
 
     return browser  # 返回浏览器实例
@@ -215,10 +215,10 @@ if __name__ == "__main__":
     # 查找并点击目标图片
     find_and_click(template_path)
 
-    # 等待点击后的操作完成
+    # 等待点击后的加载
     time.sleep(5)
 
-    # 获取 cf_clearance Cookie
+    # 获取cf_clearance
     cf_clearance = get_cookie_value(browser, "cf_clearance")
     if cf_clearance:
         print(f"成功获取 cf_clearance: {cf_clearance}")
@@ -228,6 +228,7 @@ if __name__ == "__main__":
     # 关闭浏览器
     browser.close()
 
+    # 获取到则执行签到
     if cf_clearance:
         sign_in(cf_clearance)
 
